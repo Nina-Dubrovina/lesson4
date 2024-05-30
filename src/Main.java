@@ -65,9 +65,9 @@ class Bowl {
     }
 }
 
-public class Animal {
+public class Main {
     public static void main(String[] args) {
-        Cat[] cats = {new Cat("Барсик"), new Cat("Мурзик")};
+        Cat[] cats = {new Cat("Барсик"), new Cat("Борис")};
         Bowl bowl = new Bowl(30);
 
         for (Cat cat : cats) {
