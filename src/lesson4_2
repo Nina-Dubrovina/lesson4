@@ -1,0 +1,145 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+// Интерфейс для геометрических фигур
+interface Shape {
+    double calculatePerimeter();
+    double calculateArea();
+    String getFillColor();
+    String getBorderColor();
+}
+
+// Класс для круга
+class Circle implements Shape {
+    private double radius;
+    private String fillColor;
+    private String borderColor;
+
+    public Circle(double radius, String fillColor, String borderColor) {
+        this.radius = radius;
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public String getFillColor() {
+        return fillColor;
+    }
+
+    @Override
+    public String getBorderColor() {
+        return borderColor;
+    }
+}
+
+// Класс для прямоугольника
+class Rectangle implements Shape {
+    private double width;
+    private double height;
+    private String fillColor;
+    private String borderColor;
+
+    public Rectangle(double width, double height, String fillColor, String borderColor) {
+        this.width = width;
+        this.height = height;
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (width + height);
+    }
+
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
+
+    @Override
+    public String getFillColor() {
+        return fillColor;
+    }
+
+    @Override
+    public String getBorderColor() {
+        return borderColor;
+    }
+}
+
+// Класс для треугольника
+class Triangle implements Shape {
+    private double side1;
+    private double side2;
+    private double side3;
+    private String fillColor;
+    private String borderColor;
+
+    public Triangle(double side1, double side2, double side3, String fillColor, String borderColor) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return side1 + side2 + side3;
+    }
+
+    @Override
+    public double calculateArea() {
+        // По формуле Герона
+        double p = calculatePerimeter() / 2;
+        return Math.sqrt(p * (p - side1) * (p - side2) * (p - side3));
+    }
+
+    @Override
+    public String getFillColor() {
+        return fillColor;
+    }
+
+    @Override
+    public String getBorderColor() {
+        return borderColor;
+    }
+}
+
+// Тестовый класс
+public class Main {
+    public static void main(String[] args) {
+        // Создание объектов для круга, прямоугольника и треугольника
+        Circle circle = new Circle(5, "Red", "Black");
+        Rectangle rectangle = new Rectangle(4, 6, "Blue", "Green");
+        Triangle triangle = new Triangle(3, 4, 5, "Yellow", "Purple");
+
+        // Вывод характеристик каждой фигуры
+        System.out.println("Circle:");
+        System.out.println("Perimeter: " + circle.calculatePerimeter());
+        System.out.println("Area: " + circle.calculateArea());
+        System.out.println("Fill Color: " + circle.getFillColor());
+        System.out.println("Border Color: " + circle.getBorderColor());
+
+        System.out.println("\nRectangle:");
+        System.out.println("Perimeter: " + rectangle.calculatePerimeter());
+        System.out.println("Area: " + rectangle.calculateArea());
+        System.out.println("Fill Color: " + rectangle.getFillColor());
+        System.out.println("Border Color: " + rectangle.getBorderColor());
+
+        System.out.println("\nTriangle:");
+        System.out.println("Perimeter: " + triangle.calculatePerimeter());
+        System.out.println("Area: " + triangle.calculateArea());
+        System.out.println("Fill Color: " + triangle.getFillColor());
+        System.out.println("Border Color: " + triangle.getBorderColor());
+    }
+}
